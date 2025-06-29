@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Practice Projects Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'vue-green': '#42b883',
+              'vue-dark': '#35495e'
+            }
+          }
+        }
+      };
+    </script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="./assets/css/index.css" />
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex items-center space-x-3">
+            <div
+              class="w-8 h-8 bg-vue-green rounded-lg flex items-center justify-center"
+            >
+              <i class="fab fa-vuejs text-white text-lg"></i>
+            </div>
+            <h1 class="text-xl font-bold text-gray-900">Vue.js Projects</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Top Section -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0"
+      >
+        <div>
+          <h2 class="text-3xl font-bold text-gray-900 mb-2">
+            My Practice Projects
+          </h2>
+        </div>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="bg-white rounded-xl shadow-sm border p-6 mb-8">
+        <div class="flex flex-col lg:flex-row gap-4">
+          <div class="flex-1">
+            <div class="relative">
+              <i
+                class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              ></i>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search projects..."
+                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-vue-green focus:border-transparent transition-all"
+              />
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              onclick="filterProjects('all')"
+              class="filter-btn px-4 py-2 bg-vue-green text-white rounded-lg text-sm font-medium active"
+            >
+              All Projects
+            </button>
+            <button
+              onclick="filterProjects('beginner')"
+              class="filter-btn px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+            >
+              Beginner
+            </button>
+            <button
+              onclick="filterProjects('intermediate')"
+              class="filter-btn px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+            >
+              Intermediate
+            </button>
+            <button
+              onclick="filterProjects('advanced')"
+              class="filter-btn px-4 py-2 bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-lg text-sm font-medium transition-colors"
+            >
+              Advanced
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div
+        id="projectsGrid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <div id="projects-container"></div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-sm border">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Total Projects</p>
+              <p id="totalProjects" class="text-3xl font-bold text-gray-900">
+                3
+              </p>
+            </div>
+            <div
+              class="w-12 h-12 bg-vue-green bg-opacity-10 rounded-lg flex items-center justify-center"
+            >
+              <i class="fas fa-folder text-vue-green text-xl"></i>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">Completed</p>
+              <p
+                id="completedProjects"
+                class="text-3xl font-bold text-gray-900"
+              >
+                2
+              </p>
+            </div>
+            <div
+              class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center"
+            >
+              <i class="fas fa-check-circle text-green-600 text-xl"></i>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">In Progress</p>
+              <p
+                id="inProgressProjects"
+                class="text-3xl font-bold text-gray-900"
+              >
+                1
+              </p>
+            </div>
+            <div
+              class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center"
+            >
+              <i class="fas fa-clock text-yellow-600 text-xl"></i>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-sm font-medium text-gray-600">This Month</p>
+              <p
+                id="thisMonthProjects"
+                class="text-3xl font-bold text-gray-900"
+              >
+                3
+              </p>
+            </div>
+            <div
+              class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center"
+            >
+              <i class="fas fa-calendar text-blue-600 text-xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- External JS  -->
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>

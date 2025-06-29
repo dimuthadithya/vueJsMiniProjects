@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Perspective Playground",
+        "level": "beginner",
+        "description": "An interactive playground to experiment with CSS3 perspective and 3D transforms using Vue.js. Adjust perspective and rotation values to see real-time 3D effects.",
+        "tags": [
+            "Vue 3",
+            "CSS3",
+            "3D Transforms",
+            "CSS Perspective"
+        ],
+        "ImagePath": "fab fa-vuejs",
+        "gradientColors": [
+            "green-400",
+            "green-700"
+        ],
+        "posted": "2 days ago",
+        "actions": [
+            {
+                "type": "view",
+                "title": "View Project",
+                "icon": "fas fa-external-link-alt",
+                "url": "https://your-website.com/perspective-playground"
+            },
+            {
+                "type": "github",
+                "title": "GitHub Repository",
+                "icon": "fab fa-github",
+                "url": "https://github.com/your-username/perspective-playground"
+            }
+        ]
+    }
+]
