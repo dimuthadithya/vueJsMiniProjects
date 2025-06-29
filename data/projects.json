@@ -14,19 +14,19 @@
             "green-400",
             "green-700"
         ],
-        "posted": "2 days ago",
+        "posted": "25/6/29",
         "actions": [
             {
                 "type": "view",
                 "title": "View Project",
                 "icon": "fas fa-external-link-alt",
-                "url": "https://your-website.com/perspective-playground"
+                "url": "https://dimuthadithya.github.io/vueJsMiniProjects/projects/project_000/"
             },
             {
                 "type": "github",
                 "title": "GitHub Repository",
                 "icon": "fab fa-github",
-                "url": "https://github.com/your-username/perspective-playground"
+                "url": "https://github.com/dimuthadithya/vueJsMiniProjects/tree/main/projects/project_000"
             }
         ]
     }
